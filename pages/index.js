@@ -7,7 +7,7 @@ export default function Home() {
 
   const callAPI = async() => {
     var myHeaders = new Headers();
-    myHeaders.append("apikey", "h9pLLHsx0udJ1lt70pbGaidpnDAEumh7");
+    myHeaders.append("apikey", process.env.API_URL);
 
     var requestOptions = {
       method: 'GET',
