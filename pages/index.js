@@ -5,15 +5,7 @@ import Button from '@mui/material/Button';
 
 export default function Home() {
 
-  const callAPI = async() => {
-    var myHeaders = new Headers();
-    myHeaders.append("apikey", process.env.API_URL);
-
-    var requestOptions = {
-      method: 'GET',
-      redirect: 'follow',
-      headers: myHeaders
-    };
+  const callAPI = async () => {
 
     function getInput() {
       let numberInput = document.getElementById("input").value;
@@ -22,6 +14,30 @@ export default function Home() {
       console.log(numberQ)
       return numberQ
     }
+
+    try {
+      var requestURL = 'https://api.exchangerate.host/convert?from=AUD&to=NOK&amount=' + getInput();
+      var request = new XMLHttpRequest();
+      request.open('GET', requestURL);
+      request.responseType = 'json';
+      request.send();
+
+      request.onload = function () {
+        var response = request.response;
+        document.getElementById("finalRes").innerText = response.result.toFixed(2) + "NOK";
+      }
+    } catch (err) {
+      console.log(err);
+    }
+
+    /* var myHeaders = new Headers();
+    myHeaders.append("apikey", process.env.API_URL);
+
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+      headers: myHeaders
+    };
 
     try{  
     await fetch(
@@ -35,8 +51,8 @@ export default function Home() {
         
     }catch (err){
       console.log(err);
+  } */
   }
-}
   return (
     <div className="container">
       <Head>
@@ -45,15 +61,15 @@ export default function Home() {
       </Head>
 
       <main>
-      <Typography id="res" variant='h1'>AUD to NOK</Typography>
-      <TextField id="input" label="" type="number"></TextField>
-      
-      <br></br>
-      <Button variant="contained" onClick={callAPI}>Convert</Button>
+        <Typography id="res" variant='h1'>AUD to NOK</Typography>
+        <TextField id="input" label="" type="number"></TextField>
 
-      <Typography id="finalRes" variant="h1"></Typography>
+        <br></br>
+        <Button variant="contained" onClick={callAPI}>Convert</Button>
 
-       </main>
+        <Typography id="finalRes" variant="h1"></Typography>
+
+      </main>
 
     </div>
   )
