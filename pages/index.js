@@ -31,7 +31,7 @@ export default function Home() {
 
       request.onload = function () {
         var response = request.response;
-        document.getElementById("finalRes").innerText = response.result.toFixed(2) + "NOK";
+        document.getElementById("finalRes").innerText = response.result.toFixed(2) + " NOK";
       }
     } catch (err) {
       console.log(err);
