@@ -1,6 +1,6 @@
 # AUD to NOK 🦘
 
-This simple currency converter is a reslt of my laziness to type "X australian dollars to norwegian kroner" into Google everytime I wanted to convert prices when i lived in Australia.
+This simple currency converter is a result of my laziness to type "X australian dollars to norwegian kroner" into Google everytime I wanted to convert prices when i lived in Australia.
 
 ## Tech Stack
 
